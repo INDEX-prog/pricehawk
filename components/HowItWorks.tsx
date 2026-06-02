@@ -1,112 +1,177 @@
+"use client";
+
+import Link from "next/link";
+
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ReactElement;
+}
+
+const steps: Step[] = [
+  {
+    number: "01",
+    title: "Connect Your Store",
+    description:
+      "Link your Shopify or WooCommerce store with just one click. Our secure integration imports your products automatically.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+        />
+      </svg>
+    ),
+  },
+  {
+    number: "02",
+    title: "Add Competitor URLs",
+    description:
+      "Simply paste the product URLs from your competitors' websites. Add at least 3 competitors to get started.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+        />
+      </svg>
+    ),
+  },
+  {
+    number: "03",
+    title: "Get Instant Alerts",
+    description:
+      "Receive real-time email notifications whenever a competitor changes their price. Stay informed 24/7.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+        />
+      </svg>
+    ),
+  },
+  {
+    number: "04",
+    title: "Make Smart Decisions",
+    description:
+      "Use the 30-day price trends dashboard to analyze patterns and adjust your pricing strategy accordingly.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+        />
+      </svg>
+    ),
+  },
+];
+
 export default function HowItWorks(): React.ReactElement {
-  const steps: Array<{
-    number: string;
-    title: string;
-    description: string;
-  }> = [
-    {
-      number: "01",
-      title: "Add Your Competitors",
-      description:
-        "Enter the URLs of up to 3+ competitor product pages you want to track. Takes less than 2 minutes.",
-    },
-    {
-      number: "02",
-      title: "We Monitor 24/7",
-      description:
-        "Our system automatically checks prices multiple times per day and tracks every change.",
-    },
-    {
-      number: "03",
-      title: "Get Instant Alerts",
-      description:
-        "Receive email notifications the moment a competitor changes their price. React fast, stay competitive.",
-    },
-    {
-      number: "04",
-      title: "Analyze & Act",
-      description:
-        "Use your 30-day dashboard to spot trends, understand patterns, and make smarter pricing decisions.",
-    },
-  ];
+  const handleCTAClick = (): void => {
+    if (typeof window !== "undefined" && (window as Window & { trackCTAClick?: (name: string, location: string) => void }).trackCTAClick) {
+      (window as Window & { trackCTAClick: (name: string, location: string) => void }).trackCTAClick("start_tracking", "how_it_works");
+    }
+  };
 
   return (
     <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            How <span className="text-electric-400">PriceHawk</span> works
+          <span className="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-4">
+            How It Works
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            Start tracking in 5 minutes
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Get started in minutes and never manually check competitor prices
-            again.
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            No technical skills required. Our simple onboarding process gets you
+            up and running faster than you can say &quot;competitor analysis.&quot;
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map(
-            (
-              step: { number: string; title: string; description: string },
-              index: number
-            ) => (
+        {/* Steps */}
+        <div className="relative">
+          {/* Connection Line */}
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-200 via-primary-400 to-accent-400 -translate-y-1/2"></div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {steps.map((step: Step, index: number) => (
               <div key={index} className="relative">
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-electric-500/50 to-transparent -translate-x-4"></div>
-                )}
-                <div className="bg-navy-800 border border-navy-700 rounded-xl p-6 relative">
-                  <div className="text-4xl font-bold text-electric-500/20 mb-4">
+                {/* Card */}
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow relative z-10">
+                  {/* Step Number */}
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
                     {step.number}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                  <p className="text-gray-400">{step.description}</p>
+
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 mt-4">
+                    {step.icon}
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate-600">{step.description}</p>
                 </div>
+
+                {/* Arrow (for mobile) */}
+                {index < steps.length - 1 && (
+                  <div className="lg:hidden flex justify-center my-4">
+                    <svg
+                      className="w-6 h-6 text-primary-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                      />
+                    </svg>
+                  </div>
+                )}
               </div>
-            )
-          )}
+            ))}
+          </div>
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-electric-500/10 via-electric-500/5 to-electric-500/10 rounded-2xl border border-electric-500/20 p-8 md:p-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">
-                Real results from real merchants
-              </h3>
-              <p className="text-gray-300 mb-6">
-                &ldquo;PriceHawk saved me hours every week. I used to spend my mornings
-                checking competitor sites. Now I just check my email and
-                dashboard. Game changer for my Shopify store!&rdquo;
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-electric-500 rounded-full flex items-center justify-center font-bold text-lg">
-                  JM
-                </div>
-                <div className="ml-4">
-                  <p className="font-semibold">Jessica Martinez</p>
-                  <p className="text-sm text-gray-400">
-                    Owner, StyleBox Boutique
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-navy-800/80 rounded-lg p-4 text-center">
-                <p className="text-3xl font-bold text-electric-400">8h+</p>
-                <p className="text-sm text-gray-400">Saved weekly</p>
-              </div>
-              <div className="bg-navy-800/80 rounded-lg p-4 text-center">
-                <p className="text-3xl font-bold text-green-400">23%</p>
-                <p className="text-sm text-gray-400">Revenue increase</p>
-              </div>
-              <div className="bg-navy-800/80 rounded-lg p-4 text-center">
-                <p className="text-3xl font-bold text-yellow-400">156</p>
-                <p className="text-sm text-gray-400">Price alerts received</p>
-              </div>
-              <div className="bg-navy-800/80 rounded-lg p-4 text-center">
-                <p className="text-3xl font-bold text-purple-400">5 min</p>
-                <p className="text-sm text-gray-400">Setup time</p>
-              </div>
-            </div>
-          </div>
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <Link
+            href="#pricing"
+            onClick={handleCTAClick}
+            className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:shadow-xl hover:shadow-primary-500/25"
+          >
+            <span>Start Tracking Now</span>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>
