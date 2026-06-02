@@ -1,213 +1,116 @@
-"use client";
-
 import Link from "next/link";
 
-export default function Hero(): React.ReactElement {
-  const handleCTAClick = (ctaName: string): void => {
-    if (typeof window !== "undefined" && (window as Window & { trackCTAClick?: (name: string, location: string) => void }).trackCTAClick) {
-      (window as Window & { trackCTAClick: (name: string, location: string) => void }).trackCTAClick(ctaName, "hero");
-    }
-    if (typeof window !== "undefined" && (window as Window & { trackSignupIntent?: (source: string) => void }).trackSignupIntent) {
-      (window as Window & { trackSignupIntent: (source: string) => void }).trackSignupIntent("hero_section");
-    }
-  };
-
+export default function Hero() {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center space-x-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
-              <span>Trusted by 500+ e-commerce stores</span>
-            </div>
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-accent-50 -z-10" />
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-primary-100/50 to-transparent rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-accent-100/50 to-transparent rounded-full blur-3xl -z-10" />
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              Stay ahead with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">
-                automated price tracking
-              </span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Save hours of manual price checking and stay competitive
-              effortlessly! Monitor competitor pricing in real-time and get
-              instant email alerts when prices change.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
-              <Link
-                href="#pricing"
-                onClick={() => handleCTAClick("start_free_trial")}
-                className="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:shadow-xl hover:shadow-primary-500/25 animate-pulse-glow"
-              >
-                Start Free 14-Day Trial
-              </Link>
-              <Link
-                href="#how-it-works"
-                onClick={() => handleCTAClick("watch_demo")}
-                className="w-full sm:w-auto flex items-center justify-center space-x-2 text-slate-700 hover:text-primary-600 px-8 py-4 rounded-xl font-semibold text-lg transition-colors border border-slate-200 hover:border-primary-200"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>See How It Works</span>
-              </Link>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-slate-500">
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-5 h-5 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>No credit card required</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-5 h-5 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Works with Shopify & WooCommerce</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  className="w-5 h-5 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Setup in 5 minutes</span>
-              </div>
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Badge */}
+          <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full mb-8">
+            <span className="w-2 h-2 bg-primary-600 rounded-full mr-2 animate-pulse" />
+            <span className="text-sm font-medium text-primary-700">
+              Trusted by 500+ Shopify & WooCommerce stores
+            </span>
           </div>
 
-          {/* Right Content - Dashboard Preview */}
-          <div className="relative lg:pl-8">
-            <div className="relative">
-              {/* Glow effect */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-3xl blur-2xl"></div>
+          {/* Headline */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Stay Ahead with{" "}
+            <span className="gradient-text">Automated Price Tracking</span>
+          </h1>
 
-              {/* Dashboard Card */}
-              <div className="relative bg-white rounded-2xl shadow-2xl p-6 border border-slate-100">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="font-semibold text-slate-900">
-                    Price Tracking Dashboard
-                  </h3>
-                  <span className="text-xs text-slate-500">Last 30 days</span>
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            Save hours of manual price checking and stay competitive effortlessly. 
+            Monitor competitor prices, get instant email alerts, and view price trends 
+            on a simple dashboard.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <Link href="#pricing" className="btn-primary text-lg px-8 py-4 w-full sm:w-auto">
+              Start 14-Day Free Trial
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link href="#features" className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto">
+              See How It Works
+            </Link>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              No credit card required
+            </div>
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Track 3+ competitors
+            </div>
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Instant email alerts
+            </div>
+          </div>
+        </div>
+
+        {/* Dashboard Preview */}
+        <div className="mt-16 relative">
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 pointer-events-none" />
+          <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden mx-auto max-w-5xl">
+            <div className="bg-gray-100 px-4 py-3 flex items-center space-x-2 border-b border-gray-200">
+              <div className="w-3 h-3 rounded-full bg-red-400" />
+              <div className="w-3 h-3 rounded-full bg-yellow-400" />
+              <div className="w-3 h-3 rounded-full bg-green-400" />
+              <span className="ml-4 text-sm text-gray-500">dashboard.pricehawk.com</span>
+            </div>
+            <div className="p-6 bg-gradient-to-br from-gray-50 to-white">
+              {/* Mock Dashboard Content */}
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                  <div className="text-sm text-gray-500 mb-1">Competitors Tracked</div>
+                  <div className="text-2xl font-bold text-gray-900">12</div>
+                  <div className="text-xs text-green-600 mt-1">↑ 3 new this week</div>
                 </div>
-
-                {/* Stats Grid */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="bg-slate-50 rounded-xl p-4">
-                    <p className="text-2xl font-bold text-slate-900">12</p>
-                    <p className="text-xs text-slate-500">Competitors</p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-4">
-                    <p className="text-2xl font-bold text-green-600">+8%</p>
-                    <p className="text-xs text-slate-500">Price Advantage</p>
-                  </div>
-                  <div className="bg-primary-50 rounded-xl p-4">
-                    <p className="text-2xl font-bold text-primary-600">47</p>
-                    <p className="text-xs text-slate-500">Alerts Sent</p>
-                  </div>
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                  <div className="text-sm text-gray-500 mb-1">Price Changes Today</div>
+                  <div className="text-2xl font-bold text-gray-900">8</div>
+                  <div className="text-xs text-amber-600 mt-1">5 drops, 3 increases</div>
                 </div>
-
-                {/* Chart Placeholder */}
-                <div className="bg-slate-50 rounded-xl p-4 mb-4">
-                  <div className="flex items-end justify-between h-32 space-x-2">
-                    <div className="w-full bg-primary-200 rounded-t" style={{ height: "40%" }}></div>
-                    <div className="w-full bg-primary-300 rounded-t" style={{ height: "60%" }}></div>
-                    <div className="w-full bg-primary-400 rounded-t" style={{ height: "45%" }}></div>
-                    <div className="w-full bg-primary-500 rounded-t" style={{ height: "80%" }}></div>
-                    <div className="w-full bg-primary-400 rounded-t" style={{ height: "65%" }}></div>
-                    <div className="w-full bg-primary-600 rounded-t" style={{ height: "90%" }}></div>
-                    <div className="w-full bg-accent-500 rounded-t" style={{ height: "100%" }}></div>
-                  </div>
-                  <div className="flex justify-between mt-2 text-xs text-slate-400">
-                    <span>Mon</span>
-                    <span>Tue</span>
-                    <span>Wed</span>
-                    <span>Thu</span>
-                    <span>Fri</span>
-                    <span>Sat</span>
-                    <span>Sun</span>
-                  </div>
-                </div>
-
-                {/* Alert Preview */}
-                <div className="flex items-center space-x-3 bg-orange-50 rounded-xl p-3 border border-orange-100">
-                  <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 text-orange-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                      />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-slate-900">
-                      Competitor dropped price by 15%
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      Nike Air Max 90 • 2 minutes ago
-                    </p>
-                  </div>
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                  <div className="text-sm text-gray-500 mb-1">Alerts Sent</div>
+                  <div className="text-2xl font-bold text-gray-900">24</div>
+                  <div className="text-xs text-primary-600 mt-1">Last 30 days</div>
                 </div>
               </div>
-
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg animate-float">
-                Live Updates
+              {/* Mock Chart */}
+              <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-semibold text-gray-900">Price Trends - Last 30 Days</span>
+                  <span className="text-sm text-gray-500">iPhone 15 Pro Case</span>
+                </div>
+                <div className="h-32 flex items-end space-x-1">
+                  {[40, 45, 42, 50, 48, 55, 52, 58, 54, 60, 58, 62, 55, 65, 62, 68, 64, 70, 65, 72, 68, 75, 70, 78, 72, 80, 75, 82, 78, 85].map((height, index) => (
+                    <div
+                      key={index}
+                      className="flex-1 bg-gradient-to-t from-primary-600 to-primary-400 rounded-t-sm"
+                      style={{ height: `${height}%` }}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
