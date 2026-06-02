@@ -1,28 +1,30 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PriceHawk - Automated Competitor Price Tracking for E-commerce",
+  title: "PriceHawk - Stay ahead with automated price tracking!",
   description:
-    "Stay ahead with automated price tracking! PriceHawk monitors competitor prices for Shopify and WooCommerce merchants and sends instant email alerts when prices change.",
+    "Automatically monitor competitor pricing for your e-commerce store. Get instant email alerts when competitors change their prices. Perfect for Shopify and WooCommerce merchants.",
   keywords:
-    "price tracking, competitor monitoring, e-commerce, Shopify, WooCommerce, price alerts, pricing intelligence",
+    "price tracking, competitor pricing, e-commerce, Shopify, WooCommerce, price monitoring, price alerts",
+  authors: [{ name: "PriceHawk" }],
   openGraph: {
-    title: "PriceHawk - Automated Competitor Price Tracking",
+    title: "PriceHawk - Automated Price Tracking for E-commerce",
     description:
-      "Save hours of manual price checking. Get instant email alerts when competitors change their prices.",
+      "Save hours of manual price checking and stay competitive effortlessly!",
+    url: "https://pricehawk.vercel.app",
+    siteName: "PriceHawk",
     type: "website",
-    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PriceHawk - Automated Competitor Price Tracking",
+    title: "PriceHawk - Automated Price Tracking",
     description:
-      "Save hours of manual price checking. Get instant email alerts when competitors change their prices.",
-  },
-  robots: {
-    index: true,
-    follow: true,
+      "Save hours of manual price checking and stay competitive effortlessly!",
   },
 };
 
@@ -32,8 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }): React.ReactElement {
   return (
-    <html lang="en">
-      <body className="bg-navy-900 text-white antialiased">{children}</body>
+    <html lang="fr">
+      <head>
+        <GoogleAnalytics />
+      </head>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
