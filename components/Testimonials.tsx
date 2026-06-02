@@ -1,99 +1,67 @@
-"use client";
+export default function Testimonials() {
+  const testimonials: {
+    quote: string;
+    author: string;
+    role: string;
+    company: string;
+    avatar: string;
+    rating: number;
+  }[] = [
+    {
+      quote:
+        "PriceHawk has completely transformed how we handle competitor pricing. We used to spend hours every week manually checking prices. Now we get instant alerts and can react within minutes. Our margins have improved by 12% since we started using it.",
+      author: "Sarah Mitchell",
+      role: "Owner",
+      company: "Mitchell's Home Decor",
+      avatar: "SM",
+      rating: 5,
+    },
+    {
+      quote:
+        "As a small WooCommerce store, I couldn't afford expensive enterprise tools. PriceHawk gives me everything I need at a price I can actually afford. The 30-day trend dashboard alone has helped me spot seasonal patterns I never knew existed.",
+      author: "David Chen",
+      role: "Founder",
+      company: "TechGadgets Plus",
+      avatar: "DC",
+      rating: 5,
+    },
+    {
+      quote:
+        "The onboarding was incredibly simple - I was tracking my top 5 competitors within 10 minutes. The email alerts are a game-changer. Last month, I caught a competitor's flash sale within an hour and was able to match their prices immediately.",
+      author: "Emma Rodriguez",
+      role: "E-commerce Manager",
+      company: "Bella Fashion Boutique",
+      avatar: "ER",
+      rating: 5,
+    },
+  ];
 
-interface Testimonial {
-  content: string;
-  author: string;
-  role: string;
-  company: string;
-  avatar: string;
-  rating: number;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    content:
-      "PriceHawk has saved me at least 10 hours a week. I used to manually check competitor prices every day. Now I just wait for the alerts and react immediately.",
-    author: "Sarah Mitchell",
-    role: "Owner",
-    company: "TrendyFashion Store",
-    avatar: "SM",
-    rating: 5,
-  },
-  {
-    content:
-      "The 30-day price trend dashboard helped me identify when my competitors run sales. I can now plan my promotions strategically. Revenue is up 23% since using PriceHawk.",
-    author: "Marcus Chen",
-    role: "E-commerce Manager",
-    company: "TechGadgets Pro",
-    avatar: "MC",
-    rating: 5,
-  },
-  {
-    content:
-      "As a small Shopify store owner, I couldn't afford expensive enterprise tools. PriceHawk gives me the same insights at a fraction of the cost. Absolute game-changer!",
-    author: "Emily Rodriguez",
-    role: "Founder",
-    company: "Artisan Home Decor",
-    avatar: "ER",
-    rating: 5,
-  },
-  {
-    content:
-      "Setup took literally 5 minutes. I connected my WooCommerce store, added 5 competitor URLs, and started getting alerts the same day. Couldn't be happier!",
-    author: "David Park",
-    role: "Store Owner",
-    company: "FitGear Athletics",
-    avatar: "DP",
-    rating: 5,
-  },
-  {
-    content:
-      "The instant email alerts are incredible. Last week I caught a competitor dropping prices by 20% and matched them within an hour. Saved a ton of potential lost sales.",
-    author: "Lisa Thompson",
-    role: "Operations Director",
-    company: "Beauty Essentials Co",
-    avatar: "LT",
-    rating: 5,
-  },
-  {
-    content:
-      "We track 8 competitors across 150 products. Before PriceHawk, this was impossible to manage. Now our pricing strategy is data-driven and responsive.",
-    author: "James Wilson",
-    role: "CEO",
-    company: "Outdoor Adventure Gear",
-    avatar: "JW",
-    rating: 5,
-  },
-];
-
-export default function Testimonials(): React.ReactElement {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-primary-600 font-semibold text-sm uppercase tracking-wider mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-primary-600 font-semibold text-sm uppercase tracking-wider">
             Testimonials
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Loved by e-commerce merchants
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
+            Loved by E-commerce Merchants
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Join hundreds of small businesses that use PriceHawk to stay
-            competitive and save time on price monitoring.
+          <p className="text-lg text-gray-600">
+            See what Shopify and WooCommerce store owners are saying about PriceHawk.
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial: Testimonial, index: number) => (
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow"
+              className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300"
             >
               {/* Rating Stars */}
-              <div className="flex space-x-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, starIndex: number) => (
+              <div className="flex items-center mb-4">
+                {Array.from({ length: testimonial.rating }).map((_, starIndex) => (
                   <svg
                     key={starIndex}
                     className="w-5 h-5 text-yellow-400"
@@ -106,47 +74,44 @@ export default function Testimonials(): React.ReactElement {
               </div>
 
               {/* Quote */}
-              <p className="text-slate-600 mb-6 leading-relaxed">
-                &quot;{testimonial.content}&quot;
-              </p>
+              <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                &ldquo;{testimonial.quote}&rdquo;
+              </blockquote>
 
-              {/* Author Info */}
-              <div className="flex items-center space-x-4">
-                {/* Avatar */}
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-accent-400 rounded-full flex items-center justify-center text-white font-semibold">
+              {/* Author */}
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900">
-                    {testimonial.author}
-                  </p>
-                  <p className="text-sm text-slate-500">
-                    {testimonial.role} at {testimonial.company}
-                  </p>
+                  <div className="font-semibold text-gray-900">{testimonial.author}</div>
+                  <div className="text-sm text-gray-500">
+                    {testimonial.role}, {testimonial.company}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Stats Bar */}
-        <div className="mt-16 bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+        {/* Stats Section */}
+        <div className="mt-20 bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl p-12 text-white">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl md:text-5xl font-bold mb-2">500+</p>
-              <p className="text-primary-100">Active Users</p>
+              <div className="text-4xl md:text-5xl font-bold mb-2">500+</div>
+              <div className="text-primary-100">Active Merchants</div>
             </div>
             <div>
-              <p className="text-4xl md:text-5xl font-bold mb-2">2M+</p>
-              <p className="text-primary-100">Prices Tracked</p>
+              <div className="text-4xl md:text-5xl font-bold mb-2">2M+</div>
+              <div className="text-primary-100">Prices Tracked</div>
             </div>
             <div>
-              <p className="text-4xl md:text-5xl font-bold mb-2">98%</p>
-              <p className="text-primary-100">Customer Satisfaction</p>
+              <div className="text-4xl md:text-5xl font-bold mb-2">50K+</div>
+              <div className="text-primary-100">Alerts Sent Monthly</div>
             </div>
             <div>
-              <p className="text-4xl md:text-5xl font-bold mb-2">10hrs</p>
-              <p className="text-primary-100">Saved Weekly</p>
+              <div className="text-4xl md:text-5xl font-bold mb-2">99.9%</div>
+              <div className="text-primary-100">Uptime Guarantee</div>
             </div>
           </div>
         </div>
